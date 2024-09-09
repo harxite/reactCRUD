@@ -10,6 +10,16 @@ export default CarsList;
 
 export const AddCar = (car) => {
   const lastCar = CarsList[CarsList.length - 1];
-  car.id = lastCar ? lastCar.id + 1 : 1; // Yeni id ataması
+  car.id = lastCar ? lastCar.id + 1 : 1;
   CarsList.push(car);
+};
+
+export const GetCarById = (id) => {
+  const foundCar = CarsList.find((c) => c.id === id);
+  return foundCar;
+};
+
+export const UpdateCar = (id, updatedCarData) => {
+  const car = CarsList.find((c) => c.id === id);
+  Object.assign(car, updatedCarData);
 };

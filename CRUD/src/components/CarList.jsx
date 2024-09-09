@@ -17,11 +17,12 @@ const CarList = () => {
 
   return (
     <div>
-      <table>
+      <table className="table table-bordered">
         <thead>
           <tr>
             <th>Model</th>
             <th>Isim</th>
+            <th>Islem</th>
           </tr>
         </thead>
         <tbody>
@@ -29,6 +30,16 @@ const CarList = () => {
             <tr key={car.id}>
               <td>{car.model}</td>
               <td>{car.name}</td>
+              <td>
+                <button
+                  onClick={() => {
+                    navigate(`/update/${car.id}`);
+                  }}
+                >
+                  Duzenle
+                </button>
+                <button onClick={() => {}}> Sil </button>
+              </td>
             </tr>
           ))}
         </tbody>

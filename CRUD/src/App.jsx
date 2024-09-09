@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CarList from "./components/CarList";
-import CarForm from "./components/CarForm";
+import CarAdd from "./components/AddCar";
+import CarUpdate from "./components/UpdateCar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 
@@ -9,7 +10,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<CarList />}></Route>
-        <Route path="/add" element={<CarForm />}></Route>
+        <Route path="/add" element={<CarAdd />}></Route>
+        <Route path="/update/:id" element={<CarUpdate />}></Route>
       </Routes>
     </Router>
   );

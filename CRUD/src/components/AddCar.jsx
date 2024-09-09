@@ -1,11 +1,14 @@
 import Car from "../models/Car";
-import CarsList from "../services";
 import { AddCar } from "../services";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const CarForm = () => {
-  const [formData, setFormData] = useState(new Car());
+const CarAdd = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    model: "",
+  });
+
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -25,7 +28,7 @@ const CarForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="">Name</label>
+        <label htmlFor="name">Name</label>
         <input
           type="text"
           name="name"
@@ -33,7 +36,7 @@ const CarForm = () => {
           onChange={handleChange}
           value={formData.name}
         />
-        <label htmlFor="">Model</label>
+        <label htmlFor="model">Model</label>
         <input
           type="text"
           name="model"
@@ -47,4 +50,4 @@ const CarForm = () => {
   );
 };
 
-export default CarForm;
+export default CarAdd;

@@ -28,6 +28,7 @@ const CarUpdate = () => {
       [name]: value,
     }));
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     UpdateCar(Number(id), formData);

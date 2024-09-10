@@ -1,18 +1,24 @@
-import CarsList from "../services";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { DeleteCar, AddCar, CarsList as InitialCarsList } from "../services"; // CarsList'i farklı bir isimle al
 
 const CarList = () => {
-  const [carsList, setCarsLists] = useState([]);
-
+  const [carsList, setCarsLists] = useState([]); // Başlangıçta boş bir liste
   const navigate = useNavigate();
 
   useEffect(() => {
     fillList();
   }, []);
 
+  // Listeyi başlatmak için fillList fonksiyonunu kullanıyoruz
   const fillList = () => {
-    setCarsLists(CarsList);
+    setCarsLists([...InitialCarsList]); // CarsList'in bir kopyasını state'e ata
+  };
+
+  // Silme işlemi
+  const handleDelete = (id) => {
+    DeleteCar(id); // Silme işlemini gerçekleştir
+    setCarsLists([...InitialCarsList]); // CarsList'in güncellenmiş halini state'e tekrar ata
   };
 
   return (
@@ -38,7 +44,7 @@ const CarList = () => {
                 >
                   Duzenle
                 </button>
-                <button onClick={() => {}}> Sil </button>
+                <button onClick={() => handleDelete(car.id)}> Sil </button>
               </td>
             </tr>
           ))}
